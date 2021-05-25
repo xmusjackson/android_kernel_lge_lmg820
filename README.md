@@ -1,4 +1,4 @@
-#Stock+ 4.14.117 for LG G8 US (TMO)
+# Stock+ 4.14.117 for LG G8 US (TMO)
 This will be the source for my LG G8 kernel. For now it is not working.
 This readme will be updated when I finish making changes and it does work.
 
