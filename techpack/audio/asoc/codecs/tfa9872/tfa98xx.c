@@ -29,7 +29,7 @@
 #include "inc/config.h"
 
 #ifdef CONFIG_SND_LGE_TX_NXP_LIB
-#include "../../../../../../../kernel/msm-4.14/drivers/extcon/extcon.h"
+#include "../../../../../drivers/extcon/extcon.h"
 #endif
 
 #define I2C_RETRIES 50
@@ -4593,4 +4593,3 @@ module_exit(tfa98xx_i2c_exit);
 
 MODULE_DESCRIPTION("ASoC TFA98XX driver");
 MODULE_LICENSE("GPL");
-

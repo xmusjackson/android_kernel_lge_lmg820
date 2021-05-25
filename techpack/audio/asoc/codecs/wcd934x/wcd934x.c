@@ -52,7 +52,7 @@
 #include "wcd934x-dsd.h"
 
 #ifdef CONFIG_MACH_LGE // add extcon dev for SAR backoff
-#include "../../../../../../../kernel/msm-4.14/drivers/extcon/extcon.h"
+#include "../../../../../drivers/extcon/extcon.h"
 
 static const unsigned int extcon_sar_backoff[] = {
 	EXTCON_MECHANICAL,
@@ -11268,7 +11268,7 @@ static int tavil_probe(struct platform_device *pdev)
 		dev_err(&pdev->dev, "failed to allocate extcon device\n");
 		return -ENOMEM;
 	}
-	
+
 	tavil->sar->name = "sar_backoff";
 	ret = devm_extcon_dev_register(&pdev->dev, tavil->sar);
 	if (ret < 0) {

@@ -47,7 +47,7 @@
 #include <linux/regulator/consumer.h>
 #include <dsp/q6afe-v2.h>
 #include <sound/soc-dapm.h>
-#include "../../../../../../../kernel/msm-4.14/drivers/extcon/extcon.h"
+#include "../../../../../drivers/extcon/extcon.h"
 #endif
 
 #include "sma6101.h"
@@ -2056,7 +2056,7 @@ static int sma6101_trm_vbst1_put(struct snd_kcontrol *kcontrol,
 #if defined(CONFIG_MACH_LGE)
 		sma6101->trm_vbst1 = sel;
 		if (sma6101->rev_num != REV_NUM_REV0) {
-			regmap_update_bits(sma6101->regmap, SMA6101_93_BOOST_CTRL0,0x0F, sel);	
+			regmap_update_bits(sma6101->regmap, SMA6101_93_BOOST_CTRL0,0x0F, sel);
 		}
 #else
 		regmap_update_bits(sma6101->regmap, SMA6101_93_BOOST_CTRL0,
@@ -3145,12 +3145,12 @@ err:
 static int sma6101_clock_control(struct clk *clk,int enable)
 {
 	int ret = 0;
-	
+
 	if(enable)
 		ret = clk_prepare_enable(clk);
 	else
 		clk_disable_unprepare(clk);
-		
+
 	pr_debug("%s(): clock enable = %d, ret %d\n", __func__, enable,ret);
 
 	return ret;
@@ -4350,7 +4350,7 @@ static int sma6101_clk_supply_event(struct snd_soc_dapm_widget *w,
         	ret_pinctrl =  sma6101_clock_control(sma6101->ln_bb_clk3,1);
 			if (ret_pinctrl < 0) {
 				pr_err("%s(): ln_bb_clk3 enable fail %d\n", __func__,ret_pinctrl);
-				return -EINVAL;	
+				return -EINVAL;
 			}
         }
 #endif
@@ -4367,7 +4367,7 @@ static int sma6101_clk_supply_event(struct snd_soc_dapm_widget *w,
         	ret_pinctrl =  sma6101_clock_control(sma6101->ln_bb_clk3,0);
 			if (ret_pinctrl < 0) {
 				pr_err("%s(): ln_bb_clk3 enable fail %d\n", __func__,ret_pinctrl);
-				return -EINVAL;	
+				return -EINVAL;
 			}
         }
 #endif
@@ -6092,7 +6092,7 @@ static int sma6101_probe(struct snd_soc_codec *codec)
 		if (IS_ERR(sma6101->ln_bb_clk3)) {
 			ret = PTR_ERR(sma6101->ln_bb_clk3);
 			pr_err("%s(): ln_bb_clk3 clock get fail %d\n", __func__,ret);
-			return -EINVAL;		
+			return -EINVAL;
 		}
 	}
 #endif
@@ -6144,7 +6144,7 @@ static int sma6101_remove(struct snd_soc_codec *codec)
 #if defined(CONFIG_MACH_LGE)
 	if(sma6101->sys_clk_id == SMA6101_EXTERNAL_CLOCK_24_576)
 		sma6101_msm_release_pinctrl(codec);
-	else if(sma6101->sys_clk_id == SMA6101_PLL_CLKIN_MCLK)	
+	else if(sma6101->sys_clk_id == SMA6101_PLL_CLKIN_MCLK)
 		sma6101_clock_control(sma6101->ln_bb_clk3,0); //disable the clk
 #endif
 	dev_info(codec->dev, "%s\n", __func__);
