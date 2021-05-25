@@ -3,7 +3,7 @@ This will be the source for my LG G8 kernel.
 
 The kernel should now be working.
 I am not finished making changes, and I'd also like to merge some kernel updates
-as well at some point, but for now, this is a better kernel for out LG G8's,
+as well at some point, but for now, this is a better kernel for our LG G8's,
 namely because we can compile modules against this source for use inside
 of android.
 
