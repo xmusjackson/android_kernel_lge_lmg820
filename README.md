@@ -22,8 +22,8 @@ modversion will pass. I'll have to look into this.
 
 ## For now we lose native automounting of exfat partitions.
 
-Audio modules will compile as "<module>_dlkm.ko"
-They need to be renamed to "audio_<module>.ko"
+Audio modules will compile as "(module)_dlkm.ko"
+They need to be renamed to "audio_(module).ko"
 One of the modules, machine_dlkm.ko needs to be renamed to audio_dlkm_msmnile.ko
 This is the only file that needs to be renamed differently, the rest can be done
 with simple commands like:
