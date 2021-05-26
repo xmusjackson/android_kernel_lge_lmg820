@@ -22,8 +22,8 @@ modversion will pass. I'll have to look into this.
 
 ## For now we lose native automounting of exfat partitions.
 
-Audio modules will compile as <module>_dlkm.ko
-They need to be renamed to audio_<module>.ko
+Audio modules will compile as "<module>_dlkm.ko"
+They need to be renamed to "audio_<module>.ko"
 One of the modules, machine_dlkm.ko needs to be renamed to audio_dlkm_msmnile.ko
 This is the only file that needs to be renamed differently, the rest can be done
 with simple commands like:
@@ -33,8 +33,9 @@ rename -- _dlkm.ko '.ko' *_dlkm.ko
 and
 for file in *; do mv $file audio_$file; done;
 
-There will be one extra audio module, 'wcd_cpe_dlkm.ko'
-
+There will be one extra audio module, 'wcd_cpe_dlkm.ko', we don't need this one
+we can just delete it. If you renamed all of your audio files with those commands
+before reading this, it will be "audio_wcd_cpe.ko"
 
 This is the kernel source for the LG G8 T-Mobile (LM-G820TM) downloaded
 from opensource.lge.com, specifically for the 20J build. Compatibility with
